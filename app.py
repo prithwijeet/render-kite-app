@@ -15,12 +15,23 @@ def callback():
     data = request.args.to_dict() if request.method == 'GET' else request.form.to_dict()
     print("Callback Data:", data)
 
-    try:
-        requests.post(LOCAL_APP_URL, json={"source": "kite_callback", "data": data})
-    except Exception as e:
-        print("Could not forward to local app:", e)
-
-    return jsonify({"status": "received", "forwarded_to_local": True})
+    # Remove or comment out the forwarding for now
+    return jsonify({
+        "status": "received",
+        "forwarded_to_local": False,
+        "received_data": data
+    })
+# def callback():
+#     print("Received /callback request")
+#     data = request.args.to_dict() if request.method == 'GET' else request.form.to_dict()
+#     print("Callback Data:", data)
+#
+#     try:
+#         requests.post(LOCAL_APP_URL, json={"source": "kite_callback", "data": data})
+#     except Exception as e:
+#         print("Could not forward to local app:", e)
+#
+#     return jsonify({"status": "received", "forwarded_to_local": True})
 
 @app.route('/postback', methods=['POST'])
 def postback():
