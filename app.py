@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-LOCAL_APP_URL = "http://localhost:5001/handle_kite_event"  # Your local app endpoint
+LOCAL_APP_URL = "https://7450c8a3386e.ngrok-free.app/handle_kite_event"  # Your local app endpoint
 
 @app.route('/')
 def index():
