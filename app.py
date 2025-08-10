@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-LOCAL_APP_URL = "https://d39ac58b4bff.ngrok-free.app/redirect"  # Your local app endpoint
+LOCAL_APP_URL = "https://8fe849fe2fe1.ngrok-free.app/handle_kite_event"  # Your local app endpoint
 
 @app.route('/')
 def index():
@@ -23,6 +23,7 @@ def callback():
         "received_data": data
     })
 
+# The URL where realtime order completion updates for orders placed by you will be POSTed. This has to be an HTTPS url.
 @app.route('/postback', methods=['POST'])
 def postback():
     data = request.json or request.form.to_dict()
